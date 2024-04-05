@@ -24,73 +24,79 @@ RegisterNumber:  212223240036
 */
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 from sklearn.metrics import mean_absolute_error,mean_squared_error
-df=pd.read_csv('student_scores.csv')
-print(df)
-df.head(0)
-df.tail(0)
-print(df.head())
-print(df.tail())
-x = df.iloc[:,:-1].values
+import matplotlib.pyplot as plt
+
+dataset=pd.read_csv('student_scores.csv')
+print(dataset.head())
+dataset=pd.read_csv('student_scores.csv')
+print(dataset.tail())
+x=dataset.iloc[:,:-1].values
 print(x)
-y = df.iloc[:,1].values
+y=dataset.iloc[:,1].values
 print(y)
+
 from sklearn.model_selection import train_test_split
 x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=1/3,random_state=0)
 from sklearn.linear_model import LinearRegression
-regressor = LinearRegression()
-regressor.fit(x_train,y_train)
-y_pred = regressor.predict(x_test)
+reg=LinearRegression()
+reg.fit(x_train,y_train)
+y_pred = reg.predict(x_test)
 print(y_pred)
 print(y_test)
-#Graph plot for training data
-plt.scatter(x_train,y_train,color='black')
-plt.plot(x_train,regressor.predict(x_train),color='blue')
+
+plt.scatter(x_train,y_train,color='purple')
+plt.plot(x_train,reg.predict(x_train),color='black')
 plt.title("Hours vs Scores(Training set)")
 plt.xlabel("Hours")
 plt.ylabel("Scores")
 plt.show()
-#Graph plot for test data
-plt.scatter(x_test,y_test,color='black')
-plt.plot(x_train,regressor.predict(x_train),color='red')
-plt.title("Hours vs Scores(Testing set)")
+
+plt.scatter(x_test,y_test,color='red')
+plt.plot(x_train,reg.predict(x_train),color='black')
+plt.title("Hours vs Scores(Training set)")
 plt.xlabel("Hours")
 plt.ylabel("Scores")
 plt.show()
+
 mse=mean_absolute_error(y_test,y_pred)
-print('MSE = ',mse)
+print('Mean Square Error = ',mse)
 mae=mean_absolute_error(y_test,y_pred)
-print('MAE = ',mae)
+print('Mean Absolute Error = ',mae)
 rmse=np.sqrt(mse)
-print("RMSE= ",rmse)
+print("Root Mean Square Error = ",rmse)
+
 ```
 
 ## Output:
-### Dataset
-![dataset](https://github.com/gauthamkrishna7/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/141175025/f97d31de-7938-4da3-b73f-5c2416212eea)
 
 ### Head Values
-![head](https://github.com/gauthamkrishna7/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/141175025/893832a2-f4b7-4f08-8502-344f46972bbc)
+<img width="1090" alt="Screenshot 2024-04-05 at 9 36 33 AM" src="https://github.com/gauthamkrishna7/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/141175025/4ddf5d62-c261-42be-8b67-6f6df35f3d36">
+
 
 ### Tail Values
-![tail](https://github.com/gauthamkrishna7/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/141175025/5814fbf9-d369-49e5-8185-ea7f2184ebcc)
+<img width="1090" alt="Screenshot 2024-04-05 at 9 37 06 AM" src="https://github.com/gauthamkrishna7/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/141175025/dfa9fd82-e723-4ed4-aaec-ad66ffa348e1">
 
-### X and Y Values
-![xyvalues](https://github.com/gauthamkrishna7/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/141175025/b9f2e4c1-4c92-42a3-a1ef-c8039afe6453)
+
+
+### Compare Dataset
+<img width="1090" alt="Screenshot 2024-04-05 at 9 37 18 AM" src="https://github.com/gauthamkrishna7/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/141175025/9118849a-2323-4b9c-a362-3dc8d060587a">
+
 
 ### Predication values of X and Y
-![predict ](https://github.com/gauthamkrishna7/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/141175025/d0dc14da-521e-48c1-9a08-7c7e5902b990)
+<img width="1090" alt="Screenshot 2024-04-05 at 9 37 31 AM" src="https://github.com/gauthamkrishna7/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/141175025/5ed7921d-08e1-408e-8383-6899933b01ee">
 
-### MSE,MAE and RMSE
-![values](https://github.com/gauthamkrishna7/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/141175025/acca76e2-a712-4bd3-aa67-776ff3c19e4a)
+
 
 ### Training set
-![train](https://github.com/gauthamkrishna7/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/141175025/d4e0dbe1-65e9-4343-8d15-1d601d027eb1)
+<img width="1090" alt="Screenshot 2024-04-05 at 9 37 44 AM" src="https://github.com/gauthamkrishna7/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/141175025/9fae6c7e-e00d-449f-8f16-cbbe94095e76">
+
 
 ### Testing Set
-![test](https://github.com/gauthamkrishna7/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/141175025/90f0de95-b285-41a8-9b97-9bb09b4b2477)
+<img width="1090" alt="Screenshot 2024-04-05 at 9 37 50 AM" src="https://github.com/gauthamkrishna7/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/141175025/bea6f3d4-6bf1-4c28-b7ff-167a07ec1d30">
 
+### MSE,MAE and RMSE
+<img width="1090" alt="Screenshot 2024-04-05 at 9 38 02 AM" src="https://github.com/gauthamkrishna7/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/141175025/0f1f6538-a2a8-4c7c-838e-8ccbca0c7b6c">
 
 ## Result:
 Thus the program to implement the simple linear regression model for predicting the marks scored is written and verified using python programming.

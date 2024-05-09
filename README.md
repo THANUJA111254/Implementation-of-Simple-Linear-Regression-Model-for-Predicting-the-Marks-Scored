@@ -16,12 +16,15 @@ To write a program to predict the marks scored by a student using the simple lin
 #### 6.Compare the graphs and hence we obtained the linear regression for the given datas.
 
 ## Program:
-```python
+```
 /*
 Program to implement the simple linear regression model for predicting the marks scored.
 Developed by: Gautham Krishna S
 RegisterNumber:  212223240036
 */
+```
+
+```
 import pandas as pd
 import numpy as np
 from sklearn.metrics import mean_absolute_error,mean_squared_error

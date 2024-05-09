@@ -76,12 +76,6 @@ print("Root Mean Square Error = ",rmse)
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
 
 ## Output:
